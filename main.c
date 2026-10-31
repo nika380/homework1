@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define MAX_SIZE 100 // жесткое правило: максимальный размер массива — 100 элементов
-                     // если хотим поменять размер,то меняем число в этой строчке 
-// предупреждаем компьютер, какие функции мы сами написали ниже, чтобы он не ругался при их вызове в main.void inputArray(int array[], int size);
+#define MAX_SIZE 100
+
+void inputArray(int array[], int size);
 void printArray(const int array[], int size);
 int findMin(const int array[], int size);
 int findMax(const int array[], int size);
@@ -18,24 +18,25 @@ int main(void)
         system("chcp 65001 > nul");
     #endif
 
-    int array[MAX_SIZE]; // выделяем в памяти место под массив, где может храниться до 100 чисел.
-    int size;            // переменная, куда мы запишем реальный размер массива, который введет пользователь.
-  
+    int array[MAX_SIZE];
+    int size;
+
     printf("Введите размер массива от 1 до %d: ", MAX_SIZE);
-    if (scanf("%d", &size) != 1 || size < 1 || size > MAX_SIZE) // считываем число и тут же делаем проверку валидацию (процесс проверки и подтверждения того, что процесс или данные и решают поставленные перед ними задачи)    {
-        printf("Ошибка: недопустимый размер массива.\n");  // если ввели буквы вместо цифр, или число меньше 1, или больше 100 — закрываем программу
-  return 1;
+    if (scanf("%d", &size) != 1 || size < 1 || size > MAX_SIZE)
+    {
+        printf("Ошибка: недопустимый размер массива.\n");
+        return 1;
     }
 
-    inputArray(array, size);  // вызываем функцию, чтобы заполнить массив числами с клавиатуры    
+    inputArray(array, size);
     
     printf("\nИсходный массив:\n");
     printArray(array, size);
 
-    int minIdx = findMin(array, size);// индекс минимального числа
+    int minIdx = findMin(array, size);
     int maxIdx = findMax(array, size);
-    long long sum = calculateSum(array, size); считаем сумму (long long нужен, чтобы число поместилось, если сумма будет огромной)
-    double avg = calculateAverage(sum, size); дробное
+    long long sum = calculateSum(array, size);
+    double avg = calculateAverage(sum, size);
 
     printf("\n--- Основные характеристики ---\n");
     printf("Минимальный элемент: %d (индекс: %d)\n", array[minIdx], minIdx);
@@ -52,7 +53,6 @@ int main(void)
     printf("Количество: положительных = %d, отрицательных = %d, нулей = %d\n", pos, neg, zeros);
 
     int even = 0, odd = 0;
-    //цикол по всему массиву от 0 до конца (size)
     for (int i = 0; i < size; i++) {
         if (array[i] % 2 == 0) even++;
         else odd++;
@@ -176,9 +176,6 @@ void performIndividualTask(const int array[], int size)
 
     printf("Длина самого длинного непрерывного строго возрастающего фрагмента: %d\n", maxLength);
 }
- 
-
-
 
 
     
