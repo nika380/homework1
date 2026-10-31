@@ -9,7 +9,7 @@ void printArray(const int array[], int size);
 int findMin(const int array[], int size);
 int findMax(const int array[], int size);
 long long calculateSum(const int array[], int size);
-double calculateAverage(const int array[], int size);
+double calculateAverage(long long sum, int size);
 void performIndividualTask(const int array[], int size); // (Вариант 6)
 int main(void)
 {
@@ -40,7 +40,7 @@ int main(void)
     int minIdx = findMin(array, size); // индекс минимального числа
     int maxIdx = findMax(array, size); // индекс максимального числа
     long long sum = calculateSum(array, size); // считаем сумму (long long нужен, чтобы число поместилось, если сумма будет огромной)
-    double avg = calculateAverage(array, size); // считаем среднее (double — значит дробное число)
+     double avg = calculateAverage(sum, size); // считаем среднее (double — значит дробное число)
 
     // выводим всё это на экран
     printf("\n--- Основные характеристики ---\n");
@@ -161,9 +161,7 @@ void performIndividualTask(const int array[], int size)
     
     // финальная проверка после выхода из цикла (нужна на случай, если самый длинный ряд оказался в самом конце массива)
     if (currentLength > maxLength)
-    {
-        maxLength = currentLength;
-    }
-
-    printf("Длина самого длинного непрерывного строго возрастающего фрагмента: %d\n", maxLength);
+    double calculateAverage(long long sum, int size)
+{
+    return (double)sum / size;
 }
